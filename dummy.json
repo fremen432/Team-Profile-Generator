@@ -1,12 +1,10 @@
 // TeamProfile 
 {
-    Manager: Manager { name: '', id: '', email: '', officeNumber: '' },
-    Engineers: [
-      Engineer { name: '', id: '', email: '', github: '' },
-      Engineer { name: '', id: '', email: '', github: '' }
-    ],
-    Interns: [
-      Intern { name: '', id: '', email: '', school: '' },
-      Intern { name: '', id: '', email: '', school: '' }
-    ]
+    Managers: [
+        Manager { name: 'q', id: 'w', email: 'e', officeNumber: undefined },
+        Manager { name: 'r', id: 'e', email: 'w', officeNumber: undefined },
+        Manager { name: 'q', id: 'w', email: 'e', officeNumber: undefined }
+      ],
+      Engineers: [],
+      Interns: []
   }
