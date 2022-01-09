@@ -3,36 +3,55 @@
     padding: 0;
     box-sizing: border-box;
     margin: .5rem;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    
 }
 
-.box {
-    border: 1px solid black;
-}
+.box { border: 1px solid black; }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(194, 253, 255);
 
+    background: linear-gradient(#F8B195 10%, #C06C84, #355C7D 70%);
 }
 
+.bg-color-1 { background-color: #F8B195; }
+.bg-color-2 { background-color: #F67280; }
+.bg-color-3 { background-color: #C06C84; }
+.bg-color-4 { background-color: #6C5B7B; }
+.bg-color-5 { background-color: #355C7D; }
+
 .name-role {
-    background-color: rgb(193, 255, 136);
+    /* background-color: rgb(193, 255, 136); */
+    /* background-color: rgb(66, 204, 123); */
     display: flex;
     justify-content: space-around;
 }
 
-.employee-info {
-    background-color: rgb(214, 214, 255);
+.manager-name {
+    background-color: #F67280;
+}
 
+.engineer-name {
+    background-color: #6C5B7B;
+}
+
+.intern-name {
+    background-color: #F8B195;
+}
+
+.employee-info {
+    background-color: #F8B195;
 }
 
 .card {
-    background-color: cadetblue;
-
+    background-color: #355C7D;
 }
+
 
 #Engineer-card {
     /* background-color: chartreuse; */

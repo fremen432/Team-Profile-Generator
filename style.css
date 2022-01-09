@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 800px;
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(#F8B195 10%, #C06C84, #355C7D 70%);
+  background-color: #ccc;
+  background-blend-mode: multiply;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  box-shadow: 0 26px 70px -12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 100%;
+  max-width: 500px;
+  margin: 40px;
+  opacity: 0;
+  animation-name: fadeInDown;
+  animation-delay: 0.4s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+.container .box {
+  display: flex;
+  flex: 1;
+}
+.container .box:nth-of-type(1) {
+  background-color: #F8B195;
+  flex: 3;
+  align-items: flex-end;
+}
+.container .box:nth-of-type(2) {
+  background-color: #F67280;
+}
+.container .box:nth-of-type(3) {
+  background-color: #C06C84;
+}
+.container .box:nth-of-type(4) {
+  background-color: #6C5B7B;
+}
+.container .box:nth-of-type(5) {
+  background-color: #355C7D;
+  flex: 8;
+}
+.container .box p {
+  color: white;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.2rem;
+  padding: 16px 30px;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) perspective(700px) rotateX(20deg);
+  }
+  80% {
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
