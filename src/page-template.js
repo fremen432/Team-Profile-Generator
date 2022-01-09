@@ -1,88 +1,97 @@
-const Employee = require('../lib/Employee');
+const data = require('./data2.json')
+const fs = require('fs')
 
-const managerCard = (managerCardTemplate) => {
-	return `<div class="card">
-    <div class="card-header">
-      <h2>${managerCardTemplate.getName()}</h2>
-      <h3>${managerCardTemplate.getRole()}</h3>
-    </div>
-    <div class="card-body">
-      <ul class="list-group">
-        <li class="list-group-item">ID: ${managerCardTemplate.getId()}</li>
-        <li class="list-group-item">Email: ${managerCardTemplate.getEmail()}</li>
-        <li class="list-group-item">Office Number: ${managerCardTemplate.getOfficeNumber()}</li>
-      </ul>
-    </div>
-  </div>`;
+const top = '<!DOCTYPE html><html><head><title>Page</title><link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"><link rel="stylesheet" href="./style.css"><source src="../page-template.js" type="page-template"></head><body><header class = "container"><div class = "flex box justify-center"><h1> My Team </h1></div></header><main class = "container">'
+const bottom = '</main></body></html>'
+
+var managerCards = ''
+var engineerCards = ''
+var internCards = ''
+
+function genPage(data){
+
+    createCards(data);
+    let allCards2 = managerCards + engineerCards + internCards;
+    let allHTML = top + allCards2 + bottom
+
+    fs.writeFileSync('./print/TEST.html', allHTML, (err) => { 
+        // In case of a error throw err. 
+        if (err) throw err; 
+    })
+}
+
+function createCards(input) {
+    for (i = 0; i < input.length; i++) {
+        
+        if(input[i].role === "Manager"){
+
+            function createManCard(employee) {
+                const manCard = `<div id="${employee.role}-card" class="box card">
+                <div class="box name-role">
+                <h2>${employee.name}</h2>
+                <h3>Role: ${employee.role}</h3>
+                </div>
+                <div class="box employee-info">
+                <ul class="list-group">
+                <li class="list-group-item">ID: ${employee.id}</li>
+                <li class="list-group-item">Email: ${employee.email}</li>
+                <li class="list-group-item">Office Number: ${employee.officeNumber}</li>
+                </ul>
+                </div>
+                </div>`
+                managerCards = manCard + managerCards
+            }
+            createManCard(input[i])
+
+        }
+        if(input[i].role === "Engineer"){
+            // console.log('create Engineer cards')
+
+            function createEngCard(employee) {
+                const engCard = `<div id="${employee.role}-card" class="box card">
+                <div id="" class="box name-role">
+                  <h2>${employee.name}</h2>
+                  <h3>Role: ${employee.role}</h3>
+                </div>
+                <div class="box employee-info">
+                  <ul class="list-group">
+                    <li class="list-group-item">ID: ${employee.id}</li>
+                    <li class="list-group-item">Email: ${employee.email}</li>
+                    <li class="list-group-item">Github: github.com/${employee.github}</li>
+                  </ul>
+                </div>
+              </div>`
+              //   console.log('create Engineer cards')
+              engineerCards = engCard + engineerCards
+            }
+            createEngCard(input[i])
+        }
+        if(input[i].role === "Intern"){
+            // console.log('create Intern cards')
+
+            function createIntCard(employee) {
+                const intCard = `<div id="${employee.role}-card" class="box card">
+                <div class="box name-role">
+                  <h2>${employee.name}</h2>
+                  <h3>Role: ${employee.role}</h3>
+                </div>
+                <div class="box employee-info">
+                  <ul class="list-group">
+                    <li class="list-group-item">ID: ${employee.id}</li>
+                    <li class="list-group-item">Email: ${employee.email}</li>
+                    <li class="list-group-item">School: ${employee.school}</li>
+                  </ul>
+                </div>
+              </div>`
+              internCards = intCard + internCards
+            //   console.log('create Intern cards')
+            }
+            createIntCard(input[i])
+        }
+    }
+    
 };
 
-const engineerCard = (engineerCardTemplate) => {
-	return `<div class="card">
-    <div class="card-header">
-      <h2>${engineerCardTemplate.getName()}</h2>
-      <h3>${engineerCardTemplate.getRole()}</h3>
-    </div>
-    <div class="card-body">
-      <ul class="list-group">
-        <li class="list-group-item">ID: ${engineerCardTemplate.getId()}</li>
-        <li class="list-group-item">Email: ${engineerCardTemplate.getEmail()}</li>
-        <li class="list-group-item">GitHub: ${engineerCardTemplate.getGithub()}</li>
-      </ul>
-    </div>
-  </div>`;
-};
+genPage(data);
 
-const internCard = (internCardTemplate) => {
-	return `<div class="card">
-    <div class="card-header">
-      <h2>${internCardTemplate.getName()}</h2>
-      <h3>${internCardTemplate.getRole()}</h3>
-    </div>
-    <div class="card-body">
-      <ul class="list-group">
-        <li class="list-group-item">ID: ${internCardTemplate.getId()}</li>
-        <li class="list-group-item">Email: ${internCardTemplate.getEmail()}</li>
-        <li class="list-group-item">School: ${internCardTemplate.getSchool()}</li>
-      </ul>
-    </div>
-  </div>`;
-};
-
-const generateCardSection = (cardTemplate, cardType) => {
-	switch (cardType) {
-		case 'Manager':
-			return managerCard(cardTemplate);
-		case 'Engineer':
-			return engineerCard(cardTemplate);
-		case 'Intern':
-			return internCard(cardTemplate);
-		default:
-			return '';
-	}
-};
-
-const pageTemplate = (templateData) => {
-	console.log(templateData);
-	return `<!DOCTYPE html>
-<html>
-  <head>
-      <title>Page</title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
-  <body>
-      <header class = "container">
-          <div class = "row">
-              <h1> My Team </h1>
-          </div>
-      </header>
-      <main class = "container">
-          ${generateCardSection(templateData)}
-      </main>
-  </body>
-</html>
-`;
-};
-
-module.exports = pageTemplate;
+// module.exports = pageTemplate;

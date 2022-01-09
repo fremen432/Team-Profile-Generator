@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin: .5rem;
+}
+
+.box {
+    border: 1px solid black;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(194, 253, 255);
+
+}
+
+.name-role {
+    background-color: rgb(193, 255, 136);
+    display: flex;
+    justify-content: space-around;
+}
+
+.employee-info {
+    background-color: rgb(214, 214, 255);
+
+}
+
+.card {
+    background-color: cadetblue;
+
+}
+
+#Engineer-card {
+    /* background-color: chartreuse; */
+}
