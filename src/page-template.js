@@ -1,7 +1,7 @@
-const data = require('./data2.json')
+const data = require('../db/practiceData.json')
 const fs = require('fs')
 
-const top = '<!DOCTYPE html><html><head><title>Page</title><link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"><link rel="stylesheet" href="./style.css"><source src="../page-template.js" type="page-template"></head><body><header class = "container"><div class = "flex box justify-center"><h1> My Team </h1></div></header><main class = "container">'
+const top = '<!DOCTYPE html><html><head><title>Page</title><link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template"></head><body><header class = "container"><div class = "flex box justify-center"><h1> My Team </h1></div></header><main class = "container">'
 const bottom = '</main></body></html>'
 
 var managerCards = ''
@@ -14,7 +14,7 @@ function genPage(data){
     let allCards2 = managerCards + engineerCards + internCards;
     let allHTML = top + allCards2 + bottom
 
-    fs.writeFileSync('./print/TEST.html', allHTML, (err) => { 
+    fs.writeFileSync('../print/index.html', allHTML, (err) => { 
         // In case of a error throw err. 
         if (err) throw err; 
     })
