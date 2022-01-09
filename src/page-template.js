@@ -1,7 +1,7 @@
 const data = require('../db/practiceData.json')
 const fs = require('fs')
 
-const top = '<!DOCTYPE html><html><head><title>Page</title><link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template"></head><body><header class = "container"><div class = "flex box justify-center my-team"><h1> My Team </h1></div></header><main class = "container">'
+const top = '<!DOCTYPE html><html><head><title>Team Profile 💪</title><link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template"></head><body><header class = "container"><div class = "flex box justify-center my-team"><h1> My Team </h1></div></header><main class = "container">'
 const bottom = '</main></body></html>'
 
 var managerCards = ''
@@ -58,7 +58,7 @@ function createCards(input) {
                   <ul class="list-group">
                     <li class="list-group-item">ID: ${employee.id}</li>
                     <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
-                    <li class="list-group-item">Github: <a href="https://www.github.com/${employee.github}">www.github.com/${employee.github}</a></li>
+                    <li class="list-group-item">Github: <a href="https://www.github.com/${employee.github}" target="_blank">www.github.com/${employee.github}</a></li>
                   </ul>
                 </div>
               </div>`
