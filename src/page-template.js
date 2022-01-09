@@ -1,7 +1,7 @@
 const data = require('../db/practiceData.json')
 const fs = require('fs')
 
-const top = '<!DOCTYPE html><html><head><title>Page</title><link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template"></head><body><header class = "container"><div class = "flex box justify-center bg-color-5"><h1> My Team </h1></div></header><main class = "container">'
+const top = '<!DOCTYPE html><html><head><title>Page</title><link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template"></head><body><header class = "container"><div class = "flex box justify-center my-team"><h1> My Team </h1></div></header><main class = "container">'
 const bottom = '</main></body></html>'
 
 var managerCards = ''
@@ -18,6 +18,7 @@ function genPage(data){
         // In case of a error throw err. 
         if (err) throw err; 
     })
+    fs.open('')
 }
 
 function createCards(input) {
@@ -34,7 +35,7 @@ function createCards(input) {
                 <div class="box employee-info">
                 <ul class="list-group">
                 <li class="list-group-item">ID: ${employee.id}</li>
-                <li class="list-group-item">Email: ${employee.email}</li>
+                <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
                 <li class="list-group-item">Office Number: ${employee.officeNumber}</li>
                 </ul>
                 </div>
@@ -56,8 +57,8 @@ function createCards(input) {
                 <div class="box employee-info">
                   <ul class="list-group">
                     <li class="list-group-item">ID: ${employee.id}</li>
-                    <li class="list-group-item">Email: ${employee.email}</li>
-                    <li class="list-group-item">Github: github.com/${employee.github}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
+                    <li class="list-group-item">Github: <a href="https://www.github.com/${employee.github}">www.github.com/${employee.github}</a></li>
                   </ul>
                 </div>
               </div>`
@@ -78,7 +79,7 @@ function createCards(input) {
                 <div class="box employee-info">
                   <ul class="list-group">
                     <li class="list-group-item">ID: ${employee.id}</li>
-                    <li class="list-group-item">Email: ${employee.email}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
                     <li class="list-group-item">School: ${employee.school}</li>
                   </ul>
                 </div>

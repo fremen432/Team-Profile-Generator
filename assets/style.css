@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     margin: .5rem;
-    color: white;
+    /* color: white; */
     font-family: "Montserrat", sans-serif;
     
 }
@@ -16,7 +16,9 @@ body {
     align-items: center;
     flex-direction: column;
 
-    background: linear-gradient(#F8B195 10%, #C06C84, #355C7D 70%);
+    /* background: linear-gradient(#F8B195 10%, #C06C84, #355C7D 70%); */
+    /* background: linear-gradient(#f5f4f7 10%, #b29ef7, #6649c5 70%); */
+    background: #4f3a96;
 }
 
 .bg-color-1 { background-color: #F8B195; }
@@ -26,33 +28,18 @@ body {
 .bg-color-5 { background-color: #355C7D; }
 
 .name-role {
-    /* background-color: rgb(193, 255, 136); */
-    /* background-color: rgb(66, 204, 123); */
     display: flex;
     justify-content: space-around;
 }
 
-.manager-name {
-    background-color: #F67280;
-}
+.my-team { background-color: #b29ef7; }
 
-.engineer-name {
-    background-color: #6C5B7B;
-}
+.manager-name { background-color: #ff3535; }
 
-.intern-name {
-    background-color: #F8B195;
-}
+.engineer-name { background-color: #95ff95; }
 
-.employee-info {
-    background-color: #F8B195;
-}
+.intern-name { background-color: #fff388; }
 
-.card {
-    background-color: #355C7D;
-}
+.employee-info { background-color: #f5f4f7; }
 
-
-#Engineer-card {
-    /* background-color: chartreuse; */
-}
+.card { background-color: #b29ef7; }
