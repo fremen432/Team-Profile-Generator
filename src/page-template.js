@@ -92,6 +92,4 @@ function createCards(input) {
     
 };
 
-// genPage(data);
-
 module.exports = genPage;
