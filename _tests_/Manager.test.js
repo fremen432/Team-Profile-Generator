@@ -1,35 +1,24 @@
-// const { test } = require('picomatch');
-const Manager = require('../lib/Manager');
+// const Manager = require('./lib/Manager');
+const { Manager, managerQuestionsArr } = require('../lib/Manager');
 
-test('creates an Manager object', () => {
-  const manager = new Manager('Dave', '321');
 
-  expect(manager.name).toBe('Dave');
-  expect(manager.officeNumber).toBe('UT at Austin');
-});
 
-    // tests the getName() function from EMPLOYEE class
-test("gets employee's Name", () => {
-    // Test
+
+test('Creates new Manager', () => {
+    const employee = new Manager('John Smith', 1234, 'john@smith.com', 1234567890);
+
+    expect(employee.name).toBe("John Smith");
+    expect(employee.id).toEqual(expect.any(Number));
+    expect(employee.email).toEqual(expect.any(String));
+    expect(employee.officeNumber).toEqual(expect.any(Number));
 })
 
-    // tests the getId() function from EMPLOYEE class
-test("gets employee's Id", () => {
-    // Test
-})
+test('Checks all methods for Manager class', () => {
+    const employee = new Manager('John Smith', 1234, 'john@smith.com', 1234567890);
 
-    // tests the getEmail() function from EMPLOYEE class
-test("gets employee's Email", () => {
-    // Test
-})
-
-    // tests the getRole() function from EMPLOYEE class
-test("gets employee's Role", () => {
-    // Test
-})
-
-    // tests the getRole() function from MANAGER class
-test("gets Manager's Role", () => {
-    // Test
-    // Overridden to return 'Manager'
+    expect(employee.getName()).toBe(employee.name);
+    expect(employee.getId()).toBe(employee.id);
+    expect(employee.getEmail()).toBe(employee.email);
+    expect(employee.getOfficeNumber()).toBe(employee.officeNumber);
+    expect(employee.getRole()).toBe('Manager');
 })

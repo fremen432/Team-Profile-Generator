@@ -1,96 +1,111 @@
-const data = require('../db/practiceData.json')
-const fs = require('fs')
+// const Employee = require('../lib/Employee')
+// const { Engineer } = require('../lib/Engineer')
+// const { Manager } = require('../lib/Manager')
 
-const top = '<!DOCTYPE html><html><head><title>Team Profile 💪</title><link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template"></head><body><header class = "container"><div class = "flex box justify-center my-team"><h1> My Team </h1></div></header><main class = "container">'
-const bottom = '</main></body></html>'
+// Manager Card
+const manager = managerData => {
 
-var managerCards = ''
-var engineerCards = ''
-var internCards = ''
+  cl(managerData.getName())
+//   return `
+//   <div id="${managerData.getRole()}-card" class="box card">
+//     <div class="box name-role manager-name">
+//       <h2>${managerData.getName()}</h2>
+//       <h3>Role: ${managerData.getRole()}</h3>
+//     </div> 
+//     <div class="box employee-info">
+//       <ul class="list-group">
+//         <li class="list-group-item">ID: ${managerData.getId()}</li>
+//         <li class="list-group-item">Email: <a href="mailto:${managerData.getEmail()}">${managerData.getEmail()}</a></li>
+//         <li class="list-group-item">Office Number: ${managerData.getOfficeNumber()}</li>
+//       </ul>
+//     </div>
+//   </div>
+// `
+}
+// Engineer Card
+const engineer = engineerData => {
+  return `
+  <div id="${engineerData.getRole()}-card" class="box card">
+    <div class="box name-role engineer-name">
+      <h2>${engineerData.getName()}</h2>
+      <h3>Role: ${engineerData.getRole()}</h3>
+    </div> 
+    <div class="box employee-info">
+      <ul class="list-group">
+        <li class="list-group-item">ID: ${engineerData.getId()}</li>
+        <li class="list-group-item">Email: <a href="mailto:${engineerData.getEmail()}">${engineerData.getEmail()}</a></li>
+        
+        <li class="list-group-item">Github:
+        <a href="https://www.github.com/${engineerData.getGithub()}" target="_blank">www.github.com/${engineerData.getGithub()}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+`
+}
+// Intern Card
+const intern = internData => {
+  return `
+  <div id="${internData.getRole()}-card" class="box card">
+    <div class="box name-role intern-name">
+      <h2>${internData.getName()}</h2>
+      <h3>Role: ${internData.getRole()}</h3>
+    </div> 
+    <div class="box employee-info">
+      <ul class="list-group">
+        <li class="list-group-item">ID: ${internData.getId()}</li>
+        <li class="list-group-item">Email: <a href="mailto:${internData.getEmail()}">${internData.getEmail()}</a></li>
+        <li class="list-group-item">School: ${internData.getSchool()}</li>
+      </ul>
+    </div>
+  </div>
+`
+}
+// combine all cards together
+const employeesDiv = employeesArr => {
+  let employeeHtml
+  for (var i = 0; i < employeesArr.length; i++ ) {
 
-function genPage(data){
+    if (employeesArr[i].getRole() === "Manager"){
+      employeeHtml = employeeHtml + manager(employeesArr[i])
+    }
+    if (employeesArr[i].getRole() === "Engineer"){
+      employeeHtml = employeeHtml + engineer(employeesArr[i])
+    }
+    if (employeesArr[i].getRole() === "Intern"){
+      employeeHtml = employeeHtml + intern(employeesArr[i])
+    }
+  } return employeeHtml
 
-    createCards(data);
-    let allCards2 = managerCards + engineerCards + internCards;
-    let allHTML = top + allCards2 + bottom
-
-    fs.writeFileSync('./print/index.html', allHTML, (err) => { 
-        // In case of a error throw err. 
-        if (err) throw err; 
-    })
-    fs.open('')
 }
 
-function createCards(input) {
-    for (i = 0; i < input.length; i++) {
-        
-        if(input[i].role === "Manager"){
+// html page template
+const template = data => {
+  employeesDiv(data)
 
-            function createManCard(employee) {
-                const manCard = `<div id="${employee.role}-card" class="box card">
-                <div class="box name-role manager-name">
-                <h2>${employee.name}</h2>
-                <h3>Role: ${employee.role}</h3>
-                </div>
-                <div class="box employee-info">
-                <ul class="list-group">
-                <li class="list-group-item">ID: ${employee.id}</li>
-                <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
-                <li class="list-group-item">Office Number: ${employee.officeNumber}</li>
-                </ul>
-                </div>
-                </div>`
-                managerCards = manCard + managerCards
-            }
-            createManCard(input[i])
+//   return `
+//   <!DOCTYPE html>
+//   <html>
+//     <head>
+//       <title>Team Profile 💪</title>
+//       <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+//       <link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template">
+//     </head>
+//     <body>
+//       <header class = "container">
+//         <div class = "flex box justify-center my-team">
+//           <h1> My Team </h1>
+//         </div>
+//       </header>
+//       <main class = "container">
+//       ${employeesDiv(data)}
+//       </main>
+//     </body>
+//   </html>
+// `
+}
 
-        }
-        if(input[i].role === "Engineer"){
-            // console.log('create Engineer cards')
+const cl = input => console.log(input);
 
-            function createEngCard(employee) {
-                const engCard = `<div id="${employee.role}-card" class="box card">
-                <div id="" class="box name-role engineer-name">
-                  <h2>${employee.name}</h2>
-                  <h3>Role: ${employee.role}</h3>
-                </div>
-                <div class="box employee-info">
-                  <ul class="list-group">
-                    <li class="list-group-item">ID: ${employee.id}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
-                    <li class="list-group-item">Github: <a href="https://www.github.com/${employee.github}" target="_blank">www.github.com/${employee.github}</a></li>
-                  </ul>
-                </div>
-              </div>`
-              //   console.log('create Engineer cards')
-              engineerCards = engCard + engineerCards
-            }
-            createEngCard(input[i])
-        }
-        if(input[i].role === "Intern"){
-            // console.log('create Intern cards')
 
-            function createIntCard(employee) {
-                const intCard = `<div id="${employee.role}-card" class="box card">
-                <div class="box name-role intern-name">
-                  <h2>${employee.name}</h2>
-                  <h3>Role: ${employee.role}</h3>
-                </div>
-                <div class="box employee-info">
-                  <ul class="list-group">
-                    <li class="list-group-item">ID: ${employee.id}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
-                    <li class="list-group-item">School: ${employee.school}</li>
-                  </ul>
-                </div>
-              </div>`
-              internCards = intCard + internCards
-            //   console.log('create Intern cards')
-            }
-            createIntCard(input[i])
-        }
-    }
-    
-};
-
-module.exports = genPage;
+module.exports = template;

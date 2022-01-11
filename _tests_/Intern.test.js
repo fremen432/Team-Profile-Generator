@@ -1,40 +1,22 @@
-// const { test } = require('picomatch');
-const Intern = require('../lib/Intern');
+// const Intern = require('../lib/Intern');
+const { Intern, internQuestionsArr } = require('../lib/Intern');
 
-test('creates an intern object', () => {
-  const intern = new Intern('Dave', 'https://github.com/dave123');
 
-  expect(intern.name).toBe('Dave');
-  expect(intern.school).toBe('UT at Austin');
-});
+test('Creates new Intern', () => {
+    const employee = new Intern('John Smith', 1234, 'john@smith.com', 'UT');
 
-    // tests the getName() function from EMPLOYEE class
-test("gets employee's Name", () => {
-    // Test
+    expect(employee.name).toBe("John Smith");
+    expect(employee.id).toEqual(expect.any(Number));
+    expect(employee.email).toEqual(expect.any(String));
+    expect(employee.school).toEqual(expect.any(String));
 })
 
-    // tests the getId() function from EMPLOYEE class
-test("gets employee's Id", () => {
-    // Test
-})
+test('Checks all methods for Interns class', () => {
+    const employee = new Intern('John Smith', 1234, 'john@smith.com', 'UT');
 
-    // tests the getEmail() function from EMPLOYEE class
-test("gets employee's Email", () => {
-    // Test
-})
-
-    // tests the getRole() function from EMPLOYEE class
-test("gets employee's Role", () => {
-    // Test
-})
-
-    // tests the getRole() function from INTERN class
-test("gets Intern's Role", () => {
-    // Test
-    // Overridden to return 'Intern'
-})
-
-    // tests the getSchool() function from INTERN class
-test("gets Intern's School", () => {
-    // Test
+    expect(employee.getName()).toBe(employee.name);
+    expect(employee.getId()).toBe(employee.id);
+    expect(employee.getEmail()).toBe(employee.email);
+    expect(employee.getSchool()).toBe(employee.school);
+    expect(employee.getRole()).toBe('Intern');
 })
