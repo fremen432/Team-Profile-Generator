@@ -117,7 +117,7 @@ const employeePrompt = () => {
         if (answer.employeeType === 'done') {
             let html = template(employeesArr)
             cl('...');
-            // writeFile(html);
+            writeFile(html);
             // cl('Your team profile HTML page has been generated!')
         }
     })

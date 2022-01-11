@@ -5,7 +5,7 @@ const writeFile = (fileContent) => {
 		if (err) {
 			console.log(err);
 		} else {
-			console.log('Your team profile file has been saved!');
+			console.log('Your team profile file has been generated!');
 		}
 	});
 };

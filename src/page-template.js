@@ -1,28 +1,22 @@
-// const Employee = require('../lib/Employee')
-// const { Engineer } = require('../lib/Engineer')
-// const { Manager } = require('../lib/Manager')
-
-// Manager Card
+// Manager card template
 const manager = managerData => {
-
-  cl(managerData.getName())
-//   return `
-//   <div id="${managerData.getRole()}-card" class="box card">
-//     <div class="box name-role manager-name">
-//       <h2>${managerData.getName()}</h2>
-//       <h3>Role: ${managerData.getRole()}</h3>
-//     </div> 
-//     <div class="box employee-info">
-//       <ul class="list-group">
-//         <li class="list-group-item">ID: ${managerData.getId()}</li>
-//         <li class="list-group-item">Email: <a href="mailto:${managerData.getEmail()}">${managerData.getEmail()}</a></li>
-//         <li class="list-group-item">Office Number: ${managerData.getOfficeNumber()}</li>
-//       </ul>
-//     </div>
-//   </div>
-// `
+  return `
+  <div id="${managerData.getRole()}-card" class="box card">
+    <div class="box name-role manager-name">
+      <h2>${managerData.getName()}</h2>
+      <h3>Role: ${managerData.getRole()}</h3>
+    </div> 
+    <div class="box employee-info">
+      <ul class="list-group">
+        <li class="list-group-item">ID: ${managerData.getId()}</li>
+        <li class="list-group-item">Email: <a href="mailto:${managerData.getEmail()}">${managerData.getEmail()}</a></li>
+        <li class="list-group-item">Office Number: ${managerData.getOfficeNumber()}</li>
+      </ul>
+    </div>
+  </div>
+`
 }
-// Engineer Card
+// Engineer card template
 const engineer = engineerData => {
   return `
   <div id="${engineerData.getRole()}-card" class="box card">
@@ -43,7 +37,7 @@ const engineer = engineerData => {
   </div>
 `
 }
-// Intern Card
+// Intern card template
 const intern = internData => {
   return `
   <div id="${internData.getRole()}-card" class="box card">
@@ -61,11 +55,11 @@ const intern = internData => {
   </div>
 `
 }
-// combine all cards together
+// iterates through answers array, creates cards for each team member, then combines all cards together
 const employeesDiv = employeesArr => {
-  let employeeHtml
-  for (var i = 0; i < employeesArr.length; i++ ) {
+  let employeeHtml = ''
 
+  for (var i = 0; i < employeesArr.length; i++ ) {
     if (employeesArr[i].getRole() === "Manager"){
       employeeHtml = employeeHtml + manager(employeesArr[i])
     }
@@ -76,36 +70,29 @@ const employeesDiv = employeesArr => {
       employeeHtml = employeeHtml + intern(employeesArr[i])
     }
   } return employeeHtml
-
 }
-
 // html page template
 const template = data => {
-  employeesDiv(data)
-
-//   return `
-//   <!DOCTYPE html>
-//   <html>
-//     <head>
-//       <title>Team Profile 💪</title>
-//       <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-//       <link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template">
-//     </head>
-//     <body>
-//       <header class = "container">
-//         <div class = "flex box justify-center my-team">
-//           <h1> My Team </h1>
-//         </div>
-//       </header>
-//       <main class = "container">
-//       ${employeesDiv(data)}
-//       </main>
-//     </body>
-//   </html>
-// `
+  return `
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>Team Profile 💪</title>
+      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template">
+    </head>
+    <body>
+      <header class = "container">
+        <div class = "flex box justify-center my-team">
+          <h1> My Team </h1>
+        </div>
+      </header>
+      <main class = "container">
+      ${employeesDiv(data)}
+      </main>
+    </body>
+  </html>
+`
 }
-
-const cl = input => console.log(input);
-
 
 module.exports = template;
