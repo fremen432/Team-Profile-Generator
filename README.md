@@ -11,7 +11,9 @@
 
 
 <div align="center">
+    <!-- <img src="./assets/walkthrough.gif" width="600px"> -->
     <img src="./assets/walkthrough.gif" width="600px">
+    
 </div>
 
 
