@@ -1,6 +1,7 @@
 # Module 10 - Team Profile Generator
 
-## Demo
+
+<!-- <h1 align="center">Module 10 - Team Profile Generator</h1> -->
 
 <div align="center">
     <img src="./assets/walkthrough.gif" width="600px">
