@@ -1,6 +1,4 @@
-// const Intern = require('../lib/Intern');
-const { Intern, internQuestionsArr } = require('../lib/Intern');
-
+const { Intern } = require('../lib/Intern');
 
 test('Creates new Intern', () => {
     const employee = new Intern('John Smith', 1234, 'john@smith.com', 'UT');

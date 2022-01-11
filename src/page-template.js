@@ -59,7 +59,7 @@ const intern = internData => {
 const employeesDiv = employeesArr => {
   let employeeHtml = ''
 
-  for (var i = 0; i < employeesArr.length; i++ ) {
+  for ( i = 0; i < employeesArr.length; i++ ) {
     if (employeesArr[i].getRole() === "Manager"){
       employeeHtml = employeeHtml + manager(employeesArr[i])
     }

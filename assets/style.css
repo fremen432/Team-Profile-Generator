@@ -16,8 +16,6 @@ body {
     align-items: center;
     flex-direction: column;
 
-    /* background: linear-gradient(#F8B195 10%, #C06C84, #355C7D 70%); */
-    /* background: linear-gradient(#f5f4f7 10%, #b29ef7, #6649c5 70%); */
     background: #f5f4f7;
 }
 
