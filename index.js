@@ -10,7 +10,7 @@ const { Intern, internQuestionsArr } = require('./lib/Intern');
 const employeesArr = []
 
 const init = () => { managerQuestions() }
-
+// prompts manager questions then creates object from user inputs based on Manager class 
 const managerQuestions = () => {
     inquirer.prompt(managerQuestionsArr)
     .then(( answers ) => {
@@ -19,7 +19,7 @@ const managerQuestions = () => {
         return employeePrompt();
     })
 }
-
+// prompts engineer questions then creates object from user inputs based on Engineer class 
 const engineerQuestions = () => {
     inquirer.prompt(engineerQuestionsArr)
     .then(( answers ) => {
@@ -28,7 +28,7 @@ const engineerQuestions = () => {
         return employeePrompt();
     })
 }
-
+// prompts intern questions then creates object from user inputs based on Intern class 
 const internQuestions = () => {
     inquirer.prompt(internQuestionsArr)
     .then(( answers ) => {
@@ -37,7 +37,7 @@ const internQuestions = () => {
         return employeePrompt();
     })
 }
-
+// handles prompts
 const employeePrompt = () => {
     inquirer.prompt([{
         type: 'list',
