@@ -79,7 +79,7 @@ const template = data => {
     <head>
       <title>Team Profile 💪</title>
       <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="../assets/style.css"><source src="../page-template.js" type="page-template">
+      <link rel="stylesheet" href="./style.css"><source src="../page-template.js" type="page-template">
     </head>
     <body>
       <header class = "container">
